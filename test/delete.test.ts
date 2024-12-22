@@ -1,14 +1,13 @@
 import { Fetchify } from "../src/core";
-import { HTTP_METHDOS } from "../src/core/enums";
 
-// Mock de la instancia Fetchify
+// Mocking Fetchify instance and its methods
 jest.mock('../src/core', () => {
     return {
         Fetchify: {
             create: jest.fn().mockImplementation(() => {
                 return {
                     DELETE: jest.fn().mockImplementation(async ({ endpoint }) => {
-                        // Simulamos la respuesta que se debe devolver al hacer la llamada DELETE
+                        // Simulated response for DELETE method
                         return { data: 'deleted post' };
                     }),
                 };
@@ -17,18 +16,28 @@ jest.mock('../src/core', () => {
     };
 });
 
+/**
+ * Test suite for the DELETE method in the Fetchify class.
+ */
 describe('DELETE method', () => {
+
+    /**
+     * Test for ensuring the DELETE method is called with the correct parameters
+     * and returns the expected response.
+     */
     it('should call DELETE with correct parameters and return response', async () => {
+        // Creating an instance of Fetchify
         const fetchify = Fetchify.create({ baseURL: 'https://jsonplaceholder.typicode.com' });
 
+        // Making a DELETE request
         const response = await fetchify.DELETE({ endpoint: 'posts/1' });
 
-        // Verificamos que el método DELETE fue llamado con los parámetros correctos
+        // Ensuring the DELETE method was called with the correct parameters
         expect(fetchify.DELETE).toHaveBeenCalledWith({
             endpoint: 'posts/1',
         });
 
-        // Comprobamos que la respuesta sea la esperada
+        // Verifying that the correct response is returned
         expect(response).toEqual({ data: 'deleted post' });
     });
 });
