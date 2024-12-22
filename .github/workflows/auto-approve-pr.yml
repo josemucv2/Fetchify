@@ -11,10 +11,13 @@ jobs:
     steps:
       - name: Check if author is a code owner
         run: |
+          # Obtener el autor del PR
           author=$(jq --raw-output .pull_request.user.login $GITHUB_EVENT_PATH)
 
+          # Imprimir el autor para depuración
           echo "Author of PR: $author"
 
+          # Lista de code owners
           code_owners=("josemucv2" "anotherCodeOwner")
 
           # Revisar si el autor del PR está en la lista de code owners
