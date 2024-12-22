@@ -7,26 +7,19 @@ on:
 jobs:
   auto-approve:
     runs-on: ubuntu-latest
-    
-    permissions:
-      pull-requests: write   # Esto permite realizar reseñas de PRs
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Check if author is a code owner and not the PR author
+      - name: Check if author is a code owner
         run: |
           author=$(jq --raw-output .pull_request.user.login $GITHUB_EVENT_PATH)
-          pr_author="${{ github.event.pull_request.user.login }}"
-          code_owners='josemucv2'
+          code_owners=("josemucv2" "anotherCodeOwner")
 
-          if [[ "$author" == "$code_owners" && "$pr_author" != "$code_owners" ]]; then
-            echo "Author is a code owner and not the PR author. Auto-approving the PR..."
+          # Revisar si el autor del PR está en la lista de code owners
+          if [[ " ${code_owners[@]} " =~ " ${author} " ]]; then
+            echo "Author is a code owner. Auto-approving the PR..."
             gh pr review ${{ github.event.pull_request.number }} --approve
           else
             echo "Author is either not a code owner or the PR author. No automatic approval."
           fi
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN_CICD }}
-
