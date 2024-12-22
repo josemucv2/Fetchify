@@ -1,0 +1,25 @@
+name: Auto Approve PR for Code Owners
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  auto-approve:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check if author is a code owner
+        run: |
+          author=$(jq --raw-output .pull_request.user.login $GITHUB_EVENT_PATH)
+          code_owners='josemucv2'  # Aquí colocas el nombre del propietario del código
+
+          if [[ "$author" == "$code_owners" ]]; then
+            echo "Author is a code owner. Auto-approving the PR..."
+            gh pr review ${{ github.event.pull_request.number }} --approve
+          else
+            echo "Author is not a code owner. No automatic approval."
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
