@@ -24,4 +24,4 @@ jobs:
             echo "Author is not a code owner. No automatic approval."
           fi
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.TOKEN_CICD }}
