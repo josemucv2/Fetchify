@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "target": "ES6", // El target para la salida, generalmente ES6
+    "module": "CommonJS", // Módulo de salida
+    "declaration": true, // Genera archivos .d.ts para las definiciones de tipos
+    "outDir": "./lib", // Directorio de salida para los archivos compilados
+    "rootDir": "./src", // Directorio de entrada de tus archivos TypeScript
+    "esModuleInterop": true, // Permite la interoperabilidad entre módulos CommonJS y ES Modules
+    "skipLibCheck": true, // Evita que se chequeen las definiciones de las librerías
+    "strict": true // Activa el modo estricto para verificar el código
+  },
+  "include": [
+    "src/**/*.ts" // Incluir todos los archivos .ts de la carpeta src
+  ],
+  "exclude": [
+    "node_modules" // Excluir la carpeta node_modules
+  ]
+}

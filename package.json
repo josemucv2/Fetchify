@@ -1,0 +1,42 @@
+{
+  "name": "aj-https",
+  "version": "1.0.0",
+  "description": "A lightweight HTTP client library for client and server-side usage.",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "jest",
+    "prepublishOnly": "npm run build"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node"
+  },
+  "keywords": [
+    "http-client",
+    "fetch",
+    "axios-alternative",
+    "node-fetch",
+    "http-library"
+  ],
+  "author": "Tu Nombre <tuemail@example.com>",
+  "license": "MIT",
+  "files": [
+    "lib",
+    "README.md"
+  ],
+  "devDependencies": {
+    "@types/jest": "^29.5.13",
+    "jest": "^29.7.0",
+    "jest-fetch-mock": "^3.0.3",
+    "ts-jest": "^29.2.5",
+    "typescript": "^5.6.2"
+  },
+  "peerDependencies": {
+    "node-fetch": "^3.3.0"
+  },
+  "engines": {
+    "node": ">=14"
+  }
+}
