@@ -86,20 +86,20 @@ GET<T>({ endpoint: string, options?: RequestInit, timeOut?: number })
 ### POST
 Sends a POST request to the specified endpoint with the given body.
 ```typescript
-POST<T>({ endpoint: string, body?: any, options?: RequestInit, timeOut?: number })
+POST<T>({ endpoint: string, body?: unknown, options?: RequestInit, timeOut?: number })
 ```
 
 ### PUT
 Sends a PUT request to the specified endpoint with the given body.
 
 ```typescript
-PUT<T>({ endpoint: string, body?: any, options?: RequestInit, timeOut?: number })
+PUT<T>({ endpoint: string, body?: unknown, options?: RequestInit, timeOut?: number })
 ```
 
 ### PATCH
 Sends a PATCH request to the specified endpoint with the given body.
 ```typescript
-PATCH<T>({ endpoint: string, body?: any, options?: RequestInit, timeOut?: number })
+PATCH<T>({ endpoint: string, body?: unknown, options?: RequestInit, timeOut?: number })
 ```
 
 ### DELETE
