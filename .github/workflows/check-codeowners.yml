@@ -1,0 +1,21 @@
+name: Check CODEOWNERS Modification
+
+on:
+  pull_request:
+    paths:
+      - '.github/CODEOWNERS'
+
+jobs:
+  check-codeowners:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Check if CODEOWNERS was modified
+        run: |
+          git diff --exit-code --quiet .github/CODEOWNERS || (echo "Error: CODEOWNERS file has been modified." && exit 1)
+
+      - name: Send notification to Discord
+        if: failure()  # Solo se ejecuta si el paso anterior falla (cuando CODEOWNERS se modifica)
+        run: |
+          curl -X POST -H "Content-Type: application/json" -d '{"content": "❌ The CODEOWNERS file has been modified! Please review the changes."}' ${{ secrets.DISCORD_WEBHOOK_URL }}
