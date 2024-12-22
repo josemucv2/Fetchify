@@ -1,5 +1,5 @@
 {
-  "name": "fetchify",
+  "name": "@jm/fetchify",
   "version": "1.0.0",
   "description": "A lightweight HTTP client library for client and server-side usage.",
   "main": "lib/index.js",
