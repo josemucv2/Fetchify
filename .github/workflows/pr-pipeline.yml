@@ -1,4 +1,4 @@
-name: PR Pipeline / New Pull Request $(jq --raw-output .pull_request.user.login $GITHUB_EVENT_PATH)
+name: PR Pipeline / New Pull Request
 
 on:
   pull_request:
