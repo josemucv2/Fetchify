@@ -1,0 +1,27 @@
+name: PR Pipeline / New Pull Request $(jq --raw-output .pull_request.user.login $GITHUB_EVENT_PATH)
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+
+      - name: Send Discord Notification
+        run: |
+          PR_AUTHOR=$(jq --raw-output .pull_request.user.login $GITHUB_EVENT_PATH)
+          curl -X POST -H "Content-Type: application/json" \
+            -d '{"content": "PR opened/updated by: '${PR_AUTHOR}'\nCheck the details: https://github.com/${{ github.repository }}/pull/${{ github.event.pull_request.number }}"}' \
+            ${{ secrets.DISCORD_WEBHOOK_URL }}
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
