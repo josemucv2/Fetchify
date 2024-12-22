@@ -1,5 +1,5 @@
 {
-  "name": "aj-https",
+  "name": "fetchify",
   "version": "1.0.0",
   "description": "A lightweight HTTP client library for client and server-side usage.",
   "main": "lib/index.js",
@@ -7,7 +7,8 @@
   "scripts": {
     "build": "tsc",
     "test": "jest",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "prepare": "husky install"
   },
   "jest": {
     "preset": "ts-jest",
@@ -20,7 +21,7 @@
     "node-fetch",
     "http-library"
   ],
-  "author": "Tu Nombre <tuemail@example.com>",
+  "author": "Jose Martinez martinezcaceresjosem@gmail.com",
   "license": "MIT",
   "files": [
     "lib",
@@ -28,8 +29,10 @@
   ],
   "devDependencies": {
     "@types/jest": "^29.5.13",
+    "husky": "^9.1.7",
     "jest": "^29.7.0",
     "jest-fetch-mock": "^3.0.3",
+    "lint-staged": "^15.2.11",
     "ts-jest": "^29.2.5",
     "typescript": "^5.6.2"
   },
@@ -38,5 +41,11 @@
   },
   "engines": {
     "node": ">=14"
+  },
+  "lint-staged": {
+    "*.ts": [
+      "tsc --noEmit",
+      "eslint --fix"
+    ]
   }
 }
