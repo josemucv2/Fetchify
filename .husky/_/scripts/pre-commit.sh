@@ -1,5 +1,16 @@
 #!/usr/bin/env sh
 
+# Obtiene la rama actual
+current_branch=$(git symbolic-ref --short HEAD)
+
+# Verifica si la rama actual es 'main'
+if [ "$current_branch" = "main" ]; then
+  # Alerta si se intenta hacer commit en la rama main
+  echo "🚨🚨 ERROR: You cannot commit directly to the 'main' branch. 🚨🚨"
+  echo "Please create a new branch and submit a pull request (PR)."
+  exit 1
+fi
+
 # Validar archivos TypeScript (incluyendo .ts y .tsx)
 echo "Validating TypeScript files..."
 
