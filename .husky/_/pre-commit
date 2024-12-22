@@ -1,2 +1,5 @@
 #!/usr/bin/env sh
-. "$(dirname "$0")/h"
+. "$(dirname "$0")/scripts/pre-commit.sh"
+
+npm run lint
+npm exec tsc --noEmit

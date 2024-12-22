@@ -1,2 +1,1 @@
-*                # Ignora todo
-!.husky/pre-push # No ignora el archivo pre-push dentro de .husky
+
