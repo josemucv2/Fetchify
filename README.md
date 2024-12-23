@@ -1,6 +1,6 @@
-# Fetchify
+# @jmfetchify/fetchify
 
-**Fetchify** is a lightweight and flexible HTTP request library for JavaScript/TypeScript applications. It provides simple configuration management, token-based authentication, and supports request and response interceptors. It works seamlessly on both client and server sides.
+**@jmfetchify/fetchify** is a lightweight and flexible HTTP request library for JavaScript/TypeScript applications. It provides simple configuration management, token-based authentication, and supports request and response interceptors. It works seamlessly on both client and server sides.
 
 ## Features
 
@@ -14,14 +14,18 @@
 To install the library, run:
 
 ```bash
-npm install fetchify
+npm install @jmfetchify/fetchify
+```
+or
+```bash
+pnpm install @jmfetchify/fetchify
 ```
 
 ## USAGE
 
 ```typescript
 
-import { Fetchify } from "fetchify";
+import { Fetchify } from "@jmfetchify/fetchify";
 
 const fetchifyInstance = Fetchify.create({
     baseURL: 'https://your-api-url.com',
