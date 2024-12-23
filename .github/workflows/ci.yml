@@ -33,4 +33,4 @@ jobs:
       - name: Publish to npm
         run: |
           echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_AUTH }}" > ~/.npmrc  # Configura el token
-          npm publish --access public  # Publica en npm (asegúrate de usar la configuración correcta)
+          npm publish --access public
