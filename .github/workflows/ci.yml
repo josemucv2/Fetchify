@@ -28,6 +28,7 @@ jobs:
         run: npm run build  
 
       - name: Publish to npm
+        if: github.ref == 'refs/heads/main'
         run: |
           echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_AUTH }}" > ~/.npmrc  # Configura el token
           npm publish --access public
