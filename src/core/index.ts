@@ -26,6 +26,7 @@ export class Fetchify extends BaseFetch implements ICustomRequest {
     public setToken({ token }: { token: string }) {
         this._token = token;
     }
+    
 
     public setRequestInterceptor(interceptor: (config: Request) => Promise<Request>): void {
         this._interceptors.request = interceptor;
