@@ -111,3 +111,5 @@ Sends a DELETE request to the specified endpoint.
 ```typescript
 DELETE<T>({ endpoint: string, options?: RequestInit, timeOut?: number })
 ```
+## License
+This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for details.
