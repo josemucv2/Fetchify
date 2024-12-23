@@ -1,2 +1,2 @@
 #!/usr/bin/env sh
-. "$(dirname "$0")/scripts/pre-push.sh"
+. "$(dirname "$0")/h"
