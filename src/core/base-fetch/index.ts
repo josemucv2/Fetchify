@@ -38,22 +38,8 @@ export abstract class BaseFetch {
 
             clearTimeout(setupTimeout({ controller, timeOut }));
 
-            throw this._normalizeError(error);
+            throw error
         }
     }
-
-    private _normalizeError(error: unknown): Error {
-        if (error instanceof Response) {
-            return new Error(`HTTP Error: ${error.status} - ${error.statusText}`);
-        }
-
-        if (typeof error === 'object' && error !== null) {
-            const errorDetails = JSON.stringify(error);
-            return new Error(`Request Error: ${errorDetails}`);
-        }
-
-        return new Error(`Request Error: ${String(error) || 'Unknown error occurred'}`);
-    }
-
 
 }
