@@ -46,7 +46,14 @@ export abstract class BaseFetch {
         if (error instanceof Response) {
             return new Error(`HTTP Error: ${error.status} - ${error.statusText}`);
         }
-        return new Error(`Request Error: ${error || 'Unknown error occurred'}`);
+
+        if (typeof error === 'object' && error !== null) {
+            const errorDetails = JSON.stringify(error);
+            return new Error(`Request Error: ${errorDetails}`);
+        }
+
+        return new Error(`Request Error: ${String(error) || 'Unknown error occurred'}`);
     }
+
 
 }

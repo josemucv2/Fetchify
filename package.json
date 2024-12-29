@@ -1,6 +1,6 @@
 {
   "name": "@jmfetchify/fetchify",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "A lightweight HTTP client library for client and server-side usage.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
