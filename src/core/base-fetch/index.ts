@@ -27,19 +27,21 @@ export abstract class BaseFetch {
 
             clearTimeout(setupTimeout({ controller, timeOut }));
 
-
-            if (!response.ok) {
-                throw { ...response, status: response.status };
-            }
-
             return await handleResponse<T>({ response });
 
         } catch (error) {
 
             clearTimeout(setupTimeout({ controller, timeOut }));
 
-            throw error
+            throw this._normalizeError(error);
         }
+    }
+
+    private _normalizeError(error: unknown): Error {
+        if (error instanceof Response) {
+            return new Error(`HTTP Error: ${error.status} - ${error.statusText}`);
+        }
+        return new Error(`Request Error: ${error || 'Unknown error occurred'}`);
     }
 
 }
