@@ -11,17 +11,6 @@ if [ "$current_branch" = "main" ]; then
   exit 1
 fi
 
-# Ejecutar `npm run release` para actualizar la versión automáticamente
-echo "Running 'npm run release' to bump version..."
-npm run release
-
-if [ $? -ne 0 ]; then
-  echo "✖✖ 'npm run release' failed! Please fix the issues and try again. ✖✖"
-  exit 1
-fi
-
-echo "✔ Version bumped successfully!"
-
 # Validar archivos TypeScript (incluyendo .ts y .tsx)
 echo "Validating TypeScript files..."
 
